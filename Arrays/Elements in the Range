@@ -1,0 +1,41 @@
+Given an array arr[] containing positive elements. A and B are two numbers defining a range.
+The task is to check if the array contains all elements in the given range (inclusive).
+
+Note: If the array contains all elements in the given range return true otherwise return false.
+
+Examples :
+
+Input: n = 7, A = 2, B = 5, arr[] =  {1, 4, 5, 2, 7, 8, 3}
+Output: True
+Explanation: It has all elements between range 2-5 i.e 2,3,4,5.
+Input: n = 7, A = 2, B = 6, arr[] = {1, 4, 5, 2, 7, 8, 3}
+Output: False
+Explanation: The array does not contain 6 hence it do not contains all elements in the range 2-6, the output is No.
+
+Java Code
+
+class Solution {
+    boolean check_elements(int arr[], int n, int A, int B) {
+        // Calculate the number of elements in the range [A, B]
+        int numbers = Math.abs(B - A) + 1;
+        
+        // Create an array to store the presence of elements in the range
+        boolean[] found = new boolean[numbers];
+        
+        // Iterate through the array and mark elements in the range as found
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= A && arr[i] <= B) {
+                found[arr[i] - A] = true; // Mark the element as found
+            }
+        }
+        
+        // Check if all elements in the range are found
+        for (boolean val : found) {
+            if (!val) {
+                return false; // If any element in the range is missing, return false
+            }
+        }
+        
+        return true; // All elements in the range are present
+    }
+}
