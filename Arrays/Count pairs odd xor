@@ -1,0 +1,32 @@
+Given an array arr[] of integers, find the number of pairs whose XOR is odd in the array.
+
+Examples:
+Input: arr[] = [1, 2, 3]
+Output: 2
+Explanation: The XOR of the pairs is as follows: 1 ^ 2 = 3 (odd), 1 ^ 3 = 2 (even), 2 ^ 3 = 1 (odd), There are 2 pairs with odd XOR.
+Input: arr[] = [1, 2]
+Output: 1
+Explanation: The XOR of the pair is: 1 ^ 2 = 3 (odd), There is 1 pair with odd XOR.
+
+Java Code
+
+
+class Solution {
+    public long countOddXorPairs(int[] arr) {
+        // code here
+        ArrayList<Long> list=new ArrayList<>();
+        long num=0;
+        long sum=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            for(int j=i+1;j<arr.length;j++)
+            {
+                sum=arr[i]+arr[j];
+                if(sum%2!=0)
+                list.add(sum);
+            }
+        }
+        num=list.size();
+        return num;
+    }
+}
