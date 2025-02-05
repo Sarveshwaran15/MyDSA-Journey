@@ -1,0 +1,37 @@
+Given an array arr of integers. 
+First sort the array then find whether three numbers are such that the sum of two elements equals the third element.
+
+Example:
+
+Input: arr[] = [1, 2, 3, 4, 5]
+Output: true
+Explanation: The pair (1, 2) sums to 3.
+Input: arr[] = [3, 4, 5]
+Output: false
+Explanation: No triplets satisfy the condition.
+
+Java Code
+
+class Solution {
+    public boolean findTriplet(int[] arr) {
+        Arrays.sort(arr);
+        for (int i = arr.length - 1; i >= 2; i--) {
+            int left = 0; // Pointer at the start of the array
+            int right = i - 1; // Pointer just before the current element
+
+            // Use two-pointer technique to find if a triplet exists
+            while (left < right) {
+                long sum = arr[left] + arr[right]; // Sum of the two smaller elements
+                if (sum == arr[i]) {
+                    return true; // Triplet found
+                } else if (sum < arr[i]) {
+                    left++; // Move the left pointer to increase the sum
+                } else {
+                    right--; // Move the right pointer to decrease the sum
+                }
+            }
+        }
+
+        return false; // No triplet found
+    }
+}
