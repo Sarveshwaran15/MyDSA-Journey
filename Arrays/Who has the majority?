@@ -1,0 +1,47 @@
+Given an array arr[] of size N and two elements x and y, use counter variables to find which element appears most in the array. 
+If both elements have the same frequency, then return the smaller element.
+Note:  We need to return the element, not its count.
+
+ 
+
+Example 1:
+
+Input:
+N = 11
+arr[] = {1,1,2,2,3,3,4,4,4,4,5}
+x = 4, y = 5
+Output: 4
+Explanation: 
+frequency of 4 is 4.
+frequency of 5 is 1.
+
+Java Code
+
+class Solution {
+    // Function to find element with more appearances between two elements in an
+    // array.
+    public int majorityWins(int arr[], int n, int x, int y) {
+        // code here
+        int xcount=0;
+        int ycount=0;
+        int val=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]==x)
+            {
+                xcount++;
+            }
+            if(arr[i]==y)
+            {
+                ycount++;
+            }
+        }
+        if(xcount>ycount)
+        val=x;
+        if(ycount>xcount)
+        val=y;
+        if(xcount==ycount)
+        val=x>y?y:x;
+        return val;
+    }
+}
