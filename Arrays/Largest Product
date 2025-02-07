@@ -1,0 +1,44 @@
+Given an array arr and an integer k. You have to find the maximum product of k contiguous elements in the array. 
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 4] and k = 2
+Output: 12 
+Explanation: The sub-array of size 2 will be 3 4 and the product is 12.
+Input: arr[] = [1, 6, 7, 8] and k = 3
+Output: 336
+Explanation: The sub-array of size 3 will be 6 7 8 and the product is 336.
+
+Java Code
+
+class Solution {
+    public int findMaxProduct(int[] arr, int k) {
+        int n = arr.length;
+        if (n < k) return -1; // Edge case: if k is larger than array size
+        
+        int maxProduct = 1;
+        int currentProduct = 1;
+
+        // Compute product of first k elements
+        for (int i = 0; i < k; i++) {
+            currentProduct *= arr[i];
+        }
+        maxProduct = currentProduct;
+
+        // Sliding window to calculate max product for contiguous k elements
+        for (int i = k; i < n; i++) {
+            if (arr[i - k] != 0) { 
+                currentProduct = (currentProduct / arr[i - k]) * arr[i]; 
+            } else {
+                // Recalculate the product for the current window if previous element was zero
+                currentProduct = 1;
+                for (int j = i - k + 1; j <= i; j++) {
+                    currentProduct *= arr[j];
+                }
+            }
+            maxProduct = Math.max(maxProduct, currentProduct);
+        }
+
+        return maxProduct;
+    }
+}
