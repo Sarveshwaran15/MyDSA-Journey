@@ -1,0 +1,22 @@
+You are given an integer n. You need to convert all zeroes of n to 5.
+
+Examples:
+
+Input: n = 1004
+Output: 1554
+Explanation: There are two zeroes in 1004 on replacing all zeroes with 5, the new number will be 1554.
+
+Java Code
+
+class Solution {
+    int convertfive(int num) {
+        // Your code here
+         String numStr = String.valueOf(num);
+        
+        // Replace all '0' with '5'
+        numStr = numStr.replace('0', '5');
+        
+        // Convert back to integer
+        return Integer.parseInt(numStr);
+    }
+}
