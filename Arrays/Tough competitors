@@ -1,0 +1,28 @@
+Given an array arr[] of non-negative integers representing the skill levels of competitors, 
+determine the minimum absolute difference between the skills of any two competitors. 
+Competitors are considered tough if their skill difference is the smallest among all possible pairs.
+
+Examples:
+
+Input: arr[] = [9, 4, 12, 6]
+Output: 2
+Explanation: The smallest difference between skill values is |4-6| = 2.
+
+Java Code
+
+class Solution {
+     public int minDiff(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            throw new IllegalArgumentException("Array must have at least two elements.");
+        }
+        
+        Arrays.sort(arr);
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 1; i < arr.length; i++) {
+            minDiff = Math.min(minDiff, arr[i] - arr[i - 1]);
+        }
+        
+        return minDiff;
+    }
+}
