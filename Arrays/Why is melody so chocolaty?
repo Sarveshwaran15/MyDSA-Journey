@@ -1,0 +1,29 @@
+Chunky gets happy by eating Melody. Given an array arr[], 
+each element represents the happiness Chunky gets by eating the melody.
+Chunky knows why Melody is so chocolaty but will only tell you once you tell him the maximum happiness he can get by eating two adjacent melodies.
+
+Examples:
+
+Input : arr[] = [1, 2, 3, 4, 5]
+Output : 9
+Explanation: maximum happiness he can get is 9, selecting arr[3] = 4 and arr[4] = 5 which adds up to 9.
+
+Java Code
+
+class Solution {
+    public static int maxHappiness(List<Integer> arr) {
+        if (arr.size() < 2) {
+            return arr.get(0); 
+        }
+
+        int maxSum = Integer.MIN_VALUE;
+
+       
+        for (int i = 0; i < arr.size() - 1; i++) {
+            int sum = arr.get(i) + arr.get(i + 1);
+            maxSum = Math.max(maxSum, sum);
+        }
+
+        return maxSum;
+    }
+}
