@@ -1,0 +1,35 @@
+Given an array arr[] of integers. Write a program to check whether an arithmetic progression can be formed using all the given elements. 
+
+Examples:
+
+Input: arr[] = [0, 12, 4, 8]
+Output: true
+Explanation: Rearrange given array as [0, 4, 8, 12] which forms an arithmetic progression.
+
+Java Code
+
+class Solution {
+    // Function to check if the given array forms an arithmetic progression
+    public boolean checkIsAP(int[] arr) {
+        // Your code goes here
+        Arrays.sort(arr);
+        boolean val=true;
+        int diff=0;
+        int temp=0;
+        temp=Math.abs(arr[0]-arr[1]);
+        if(arr.length<=2)
+        {
+            val=true;
+        }
+        else{
+         for (int i = 1; i < arr.length - 1; i++) {
+            diff = Math.abs(arr[i + 1] - arr[i]); 
+            if (diff != temp) {
+                val = false;
+                break; 
+            }
+         }
+        }
+        return val;
+    }
+}
