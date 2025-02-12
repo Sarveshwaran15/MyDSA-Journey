@@ -1,0 +1,35 @@
+Given an array arr, write a program segregating even and odd numbers. 
+The program should put all even numbers first in sorted order, and then odd numbers in sorted order.
+
+Note:- You don't have to return the array, you have to modify it in-place.
+
+Example:
+
+Input: arr[] = [12, 34, 45, 9, 8, 90, 3]
+Output: [8, 12, 34, 90, 3, 9, 45]
+Explanation: Even numbers are 12, 34, 8 and 90. Rest are odd numbers.
+
+Java Code
+
+class Solution {
+    void segregateEvenOdd(int arr[]) {
+        ArrayList<Integer> even = new ArrayList<>();
+        ArrayList<Integer> odd = new ArrayList<>();
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                even.add(num);
+            } else {
+                odd.add(num);
+            }
+        }
+        Collections.sort(even);
+        Collections.sort(odd);
+        int index = 0;
+        for (int num : even) {
+            arr[index++] = num;
+        }
+        for (int num : odd) {
+            arr[index++] = num;
+        }
+    }
+}
