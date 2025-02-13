@@ -1,0 +1,28 @@
+Given an array, the task is to find the difference between the highest occurrence and lowest occurrence of any number in an array.
+Note: If only one type of element is present in the array return 0
+
+Examples:
+
+Input: arr[] = [1, 2, 2]
+Output: 1
+Explanation:  Lowest occurring element (1) occurs once. Highest occurring element (2) occurs 2 times
+
+Java Code
+
+class Solution {
+    // Function to find the difference between the maximum and minimum frequency of
+    // elements.
+    public int findDiff(int[] arr) {
+        // code here
+      HashMap<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        Collection<Integer> frequencies = freqMap.values();
+        if (frequencies.size() == 1) {
+            return 0;
+        }
+
+        return Collections.max(frequencies) - Collections.min(frequencies);
+    }
+}
