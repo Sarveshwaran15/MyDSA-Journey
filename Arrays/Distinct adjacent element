@@ -1,0 +1,27 @@
+Given an array arr[] of integers,
+the task is to check whether obtaining an array with distinct adjacent elements is possible by swapping two neighboring array elements.
+
+Examples:
+
+Input: arr[] = [1, 1, 2]
+Output: true
+Explanation: Swapping last 2 elements can result in [1, 2, 1].
+
+Java Code
+
+class Solution {
+    public boolean distinctAdjacentElement(int[] arr) {
+        int n = arr.length;
+        Arrays.sort(arr); 
+        int maxFreq = 1, count = 1;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] == arr[i - 1]) {
+                count++;
+            } else {
+                count = 1; 
+            }
+            maxFreq = Math.max(maxFreq, count); 
+        }
+        return maxFreq <= (n + 1) / 2;
+    }
+}
