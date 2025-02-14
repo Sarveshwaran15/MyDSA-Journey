@@ -1,0 +1,35 @@
+Given a integer n. We have n*n values of a 2-d array, and  n values of 1-d array. 
+Task is to find the sum of the left diagonal values of the 2-d array and the max element of the 1-d array and print them with space in between.
+
+Example 1:
+
+â€‹Input : arr[][] = {{1,2,3}, {4,5,6}, {7, 8,9}} 
+        and N = 3
+brr[] = {3, 6, 9}
+Output : 15 9
+
+Java Code
+
+class Complete {
+    public static ArrayList<Integer> array(int a[][], int b[], int n) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+       
+        int leftDiagonalSum = 0;
+        for (int i = 0; i < n; i++) {
+            leftDiagonalSum += a[i][i]; 
+        }
+
+        int maxElement = b[0];
+        for (int i = 1; i < n; i++) {
+            if (b[i] > maxElement) {
+                maxElement = b[i];
+            }
+        }
+
+        result.add(leftDiagonalSum);
+        result.add(maxElement);
+
+        return result;
+    }
+}
