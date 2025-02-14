@@ -1,0 +1,28 @@
+Java Code
+
+class MyStack {
+    private int[] arr;
+    private int top;
+    private int capacity;
+
+    public MyStack() {
+        capacity = 1000; 
+        arr = new int[capacity];
+        top = -1; 
+    }
+
+    // Push operation
+    public void push(int x) {
+        if (top < capacity - 1) { 
+            arr[++top] = x; 
+        }
+    }
+
+    // Pop operation
+    public int pop() {
+        if (top == -1) {
+            return -1; 
+        }
+        return arr[top--]; 
+    }
+}
