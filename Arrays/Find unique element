@@ -1,0 +1,30 @@
+Given an array of elements occurring in multiples of k, except one element which doesn't occur in multiple of k. Return the unique element.
+
+Examples:
+
+Input: k = 3, arr[] = [6, 2, 5, 2, 2, 6, 6]
+Output: 5
+Explanation: Every element appears 3 times except 5.
+
+Java Code
+
+class Solution {
+    public int findUnique(int k, int[] arr) {
+     
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+
+        // Count occurrences of each element
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Find the element that does not appear k times
+        for (int key : freqMap.keySet()) {
+            if (freqMap.get(key) % k != 0) {
+                return key;
+            }
+        }
+
+        return -1; // Should never reach here as the problem guarantees a unique element
+    }
+}
