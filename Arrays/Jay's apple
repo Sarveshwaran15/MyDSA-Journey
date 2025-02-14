@@ -1,0 +1,25 @@
+Given a queue of persons represented by an array of integers, 
+where each person is identified by a specific integer, 
+find the minimum kilograms of apples that need to be distributed, 
+ensuring that each person receives 1 kilogram of apples only once.
+
+Examples:
+
+Input: arr[] = [1, 1, 1, 1, 1]
+Output: 1
+Explanation: The person identified by '1' appears multiple times but will only receive 1 kilogram of apples once. 
+Therefore, the minimum apples required is 1 kg.
+
+Java Code
+
+
+class Solution {
+    public int minimumApple(int[] arr) {
+        HashSet<Integer> uniquePersons = new HashSet<>();
+       
+        for (int person : arr) {
+            uniquePersons.add(person);
+        }
+        return uniquePersons.size();
+    }
+}
