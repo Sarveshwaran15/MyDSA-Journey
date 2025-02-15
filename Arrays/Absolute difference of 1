@@ -1,0 +1,47 @@
+Given an array arr. 
+Return all the numbers less than k and the number which have at least two digits and the absolute difference between every adjacent digit of that number should be 1 in the array.
+
+Note: Return an empty list if no such number is present.
+
+Examples:
+
+Input: arr[] = [7, 98, 56, 43, 45, 23, 12, 8], k = 54
+Output: [43, 45, 23, 12]
+Explanation: 43 45 23 12 all these numbers have adjacent digits diff as 1 and they areless than 54.
+
+
+Java Code
+
+class Solution {
+    public ArrayList<Integer> getDigitDiff1AndLessK(int[] arr, int k) {
+        // code here
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int num : arr) {
+            if (num < k) {
+                int prevDigit = num % 10;
+                int temp = num / 10;
+                boolean isValid = temp > 0; 
+                
+                while (temp > 0) {
+                    int currentDigit = temp % 10;
+                    if (Math.abs(currentDigit - prevDigit) != 1) {
+                        isValid = false;
+                        break;
+                    }
+                    prevDigit = currentDigit;
+                    temp /= 10;
+                }
+
+                if (isValid) {
+                    result.add(num);
+                }
+            }
+        }
+
+        return result;
+    
+    
+        
+    }
+}
