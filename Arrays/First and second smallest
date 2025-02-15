@@ -1,0 +1,29 @@
+Given an array, arr of integers, 
+your task is to return the smallest and second smallest element in the array. 
+If the smallest and second smallest do not exist, return -1.
+
+Examples:
+
+Input: arr[] = [2, 4, 3, 5, 6]
+Output: 2 3 
+Explanation: 2 and 3 are respectively the smallest and second smallest elements in the array.
+
+Java Code
+
+class Solution {
+    public int[] minAnd2ndMin(int arr[]) {
+        // code here
+         int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+
+        for (int num : arr) {
+            if (num < min1) {
+                min2 = min1;
+                min1 = num;
+            } else if (num > min1 && num < min2) {
+                min2 = num;
+            }
+        }
+
+        return (min2 == Integer.MAX_VALUE) ? new int[]{-1} : new int[]{min1, min2};
+    }
+}
