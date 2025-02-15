@@ -1,0 +1,29 @@
+Given an array arr[] of distinct integers from 1 to arr.size(),
+count the minimum number of moveToFront operations needed to arrange the elements in ascending order (1, 2, 3, ..., arr.size()).
+A moveToFront operation picks any element arr[i] and places it at the first position.
+
+Examples:
+
+Input: arr = [3, 2, 1, 4]
+Output: 2
+Explanation: We need to perform moveToFront on 1 and 2 to make the array sorted.
+
+Java Code
+
+
+class Solution {
+  
+    public int minMoves(ArrayList<Integer> arr) {
+        int n = arr.size();
+        int expected = 1, longestSeq = 1;
+        for (int num : arr) {
+            if (num == expected) {
+                longestSeq++;
+                expected++;
+            }
+        }
+        
+                return n - longestSeq;
+    
+    }
+}
