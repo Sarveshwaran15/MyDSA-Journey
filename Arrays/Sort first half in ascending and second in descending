@@ -1,0 +1,29 @@
+Given an array arr of even size, sort the first half of the array in ascending order and the second half in descending order.
+
+Examples :
+
+Input: arr[] = [10, 20, 30, 40]
+Output: [10, 20, 40, 30]
+Explanation: The 10 and 20 will be sorted in ascending order and 30 and 40 will be sorted in descending order.
+
+Java Code
+
+class Solution {
+    public ArrayList<Integer> customSort(int[] arr) {
+        int n = arr.length;
+        int mid = n / 2;
+        Arrays.sort(arr, 0, mid);
+        Arrays.sort(arr, mid, n);
+        for (int i = mid, j = n - 1; i < j; i++, j--) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int num : arr) {
+            result.add(num);
+        }
+
+        return result;
+    }
+}
