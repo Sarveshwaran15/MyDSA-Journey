@@ -1,0 +1,32 @@
+Given an array arr of integers, find all the elements that occur more than once in the array. If no element repeats, return an empty array.
+
+Examples:
+
+Input: arr[] = [2, 3, 1, 2, 3]
+Output: [2, 3] 
+
+Java Code
+
+class Solution {
+    public List<Integer> findDuplicates(int[] arr) {
+        // code here
+          ArrayList<Integer> lst = new ArrayList<>();
+        int i = 0;
+        int j = i + 1;
+        
+        Arrays.sort(arr); 
+        
+        while (j < arr.length) {
+            if (arr[i] == arr[j]) {
+             
+                if (!lst.contains(arr[i])) {
+                    lst.add(arr[i]);
+                }
+            }
+            i++;
+            j++;
+        }
+        
+        return lst;
+    }
+}
