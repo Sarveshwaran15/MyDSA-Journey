@@ -1,0 +1,33 @@
+Given an array arr[] and an integer x.
+You have to calculate the average for each element arr[i] and x and find out whether that number exists in the array. 
+Do it for all the elements of the array and store the count result in another array for each index how many occurrences of average are present in the array.
+
+Note: Always take the floor value of the average.
+
+Examples:
+
+Input : arr[] = [2, 4, 8, 6, 2] and x = 2
+Output : [2, 0, 0, 1, 2]
+Explanation: We take x = 2 and take average with arr[0] whch is equal to 2. 
+We found 2 resides in array at two positions (1st and 5th element) thus storing 2 in another array at 0th index. 
+Similarly do for all elements and store the count in second array.
+
+Java Code
+
+class Solution {
+    public ArrayList<Integer> countArray(int[] arr, int x) {
+      
+         ArrayList<Integer> result = new ArrayList<>();
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        for (int num : arr) {
+            int avg = (num + x) / 2;
+            result.add(freqMap.getOrDefault(avg, 0));
+        }
+
+        return result;
+    
+    }
+}
