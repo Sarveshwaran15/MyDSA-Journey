@@ -1,0 +1,40 @@
+Given a non-negative number represented as a list of digits, add 1 to the number (increment the number represented by the digits). 
+The digits are stored such that the most significant digit is first element of array.
+ 
+
+Example 1:
+
+Input: 
+N = 3
+arr[] = {1, 2, 4}
+Output: 
+1 2 5
+Explanation:
+124+1 = 125, and so the Output
+
+Java Code
+
+class Solution {
+    static ArrayList<Integer> increment(ArrayList<Integer> arr , int N) {
+        // code here
+       ArrayList<Integer> result = new ArrayList<>();
+        int carry = 1; 
+        for (int i = N - 1; i >= 0; i--) {
+            int sum = arr.get(i) + carry;
+            if (sum == 10) {
+                result.add(0); 
+                carry = 1;
+            } else {
+                result.add(sum); 
+                carry = 0;
+            }
+        }
+        if (carry == 1) {
+            result.add(1);
+        }
+        Collections.reverse(result);
+        return result;
+    
+
+    }
+}
