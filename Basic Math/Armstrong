@@ -1,0 +1,23 @@
+Java Code
+
+public class Armstrong {
+    public static void main(String[] args) {
+        int x=1634;
+        int value=x;
+        int sum=0;
+        int digits = String.valueOf(x).length();
+        while(x>0)
+        {
+            int lastDigit=x%10;
+            sum+=Math.pow(lastDigit, digits);
+            x=x/10;
+        }
+        if(sum==value)
+        {
+            System.out.println("Armstrong");
+        }
+        else{
+            System.out.println("Not Armstrong");
+        }
+    }
+}
