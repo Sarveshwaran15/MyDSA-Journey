@@ -1,0 +1,24 @@
+Java Code
+
+public class Palindrome {
+    public static void main(String[] args)
+    {
+        int n=1911;
+        int value=n;
+        int rev=0;
+        while(n>0)
+        {
+            int lastDigit=n%10;
+            n=n/10;
+            rev=(rev*10)+lastDigit;
+        }
+        if(rev==value)
+        {
+            System.out.println("Palindrome");
+        }
+        else{
+            System.out.println("Not Palindrome");
+        }
+    }
+}
+
