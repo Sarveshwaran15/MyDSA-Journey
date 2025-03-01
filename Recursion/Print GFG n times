@@ -1,0 +1,25 @@
+Print GFG n times without the loop.
+
+Example:
+
+Input:
+5
+Output:
+GFG GFG GFG GFG GFG
+
+Java Code
+class Solution {
+
+        String name="GFG";
+        int count=1;
+    void printGfg(int N) {
+        // code here
+       
+        if(count<=N)
+        {
+            System.out.print(name+" ");
+            count++;
+            printGfg(N);
+        }
+    }
+}
