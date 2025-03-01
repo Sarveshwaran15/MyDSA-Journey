@@ -1,0 +1,51 @@
+Given two arrays a and b both of size n. 
+Given q queries in an array query each having a positive integer x denoting an index of the array a. 
+For each query, your task is to find all the elements less than or equal to a[x] in the array b.
+
+Example 1:
+
+Input:
+n = 3
+a[] = {4,1,2}
+b[] = {1,7,3}
+q = 2
+query[] = {0,1}
+Output : 
+2
+1
+Explanation: 
+For 1st query, the given index is 0, a[0] = 4. There are 2 elements(1 and 3) which are less than or equal to 4.
+For 2nd query, the given index is 1, a[1] = 1. There exists only 1 element(1) which is less than or equal to 1.
+
+Java Code
+
+
+class Solution
+{
+    public static int[] countElements(int a[], int b[], int n, int query[], int q)
+    {
+        Arrays.sort(b);
+        int[] result = new int[q];
+        for (int i = 0; i < q; i++) {
+            int index = query[i]; 
+            int value = a[index]; 
+            int count = upperBound(b, value);
+            result[i] = count;
+        }
+        return result;
+    }
+    private static int upperBound(int[] arr, int target) {
+        int low = 0, high = arr.length;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] <= target) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
+    
+
+    }
+}
