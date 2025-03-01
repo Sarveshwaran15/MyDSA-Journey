@@ -1,0 +1,41 @@
+You are given an array arr[] of integers. Your task is to find all the numbers in the array whose digits consist only of {1, 2, 3}.
+
+Return an array containing only those numbers from arr[]. 
+The order of the numbers in the output array should be the same as their order in the input array.
+If there is no such element in arr[]. Return {-1}.
+
+Examples:
+
+Input: arr[] = [4, 6, 7]
+Output: [-1]
+Explanation: No elements are there in the array which contains digits 1, 2 or 3.
+
+Java Code
+
+class Solution {
+    public List<Integer> filterByDigits(List<Integer> arr) {
+        // code here
+        List<Integer> result = new ArrayList<>();
+        for (int num : arr) {
+            int temp = num;
+            boolean valid = true;
+            while (temp > 0) {
+                int digit = temp % 10;
+                if (digit != 1 && digit != 2 && digit != 3) {
+                    valid = false;
+                    break;
+                }
+                temp /= 10;
+            }
+            if (valid) {
+                result.add(num);
+            }
+        }
+         if (result.isEmpty()) {
+            List<Integer> tempList = new ArrayList<>();
+            tempList.add(-1);
+            return tempList;
+        }
+        return result;
+    }
+}
