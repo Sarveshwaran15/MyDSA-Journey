@@ -1,0 +1,25 @@
+Given an integer n, calculate the sum of series 13 + 23 + 33 + 43 + … till n-th term.
+
+Examples:
+
+Input: n = 5
+Output: 225
+Explanation: 13 + 23 + 33 + 43 + 53 = 225
+
+Java Code
+
+class Solution {
+    int count=1;
+    int sum=0;
+    int sumOfSeries(int n) {
+        // code here
+        if(count<=n)
+        {
+            sum+=count*count*count;
+            count++;
+            sumOfSeries(n);
+        }
+        return sum;
+        
+    }
+}
