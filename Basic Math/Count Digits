@@ -11,6 +11,23 @@ Explanation: 1, 2 when both divide 12 leaves remainder 0.
 
 Java Code
 
+class PrintingDigit {
+    public static void main(String[] args)
+    {
+        int n=79;
+        int count=0;
+        while(n>0)
+        {
+            int lastDigit=n%10;
+            count++;
+           // System.out.println(lastDigit);
+            n=n/10;
+        }
+        System.out.println(count);
+    }
+    
+}
+ 
 class Solution {
     static int evenlyDivides(int n) {
         // code here
