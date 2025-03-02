@@ -1,0 +1,19 @@
+Java Code
+import java.util.Arrays;
+
+public class ReverseArrayRecursion {
+    public static void main(String[] args) {
+        int[] arr={2,3,5,9,8};
+        reverse(0, arr,arr.length-1);
+        System.out.println(Arrays.toString(arr));
+    }
+    static void reverse (int i,int[] arr,int n)
+    {
+       if(i>=n)
+            return;
+       int t=arr[i];
+       arr[i]=arr[n];
+       arr[n]=t;
+       reverse(i+1, arr, n-1); 
+    }   
+}
