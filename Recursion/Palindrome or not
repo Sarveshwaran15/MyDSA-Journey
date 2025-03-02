@@ -1,0 +1,23 @@
+Java Code
+public class PalindromeString {
+    public static void main(String[] args) {
+        String name = "MADAM";
+        String reversed = reverse(name, 0, name.length() - 1);
+        
+        if (name.equals(reversed)) {
+            System.out.println("Yes, it's a palindrome");
+        } else {
+            System.out.println("No, it's not a palindrome");
+        }
+    }
+
+    static String reverse(String name, int i, int n) {
+        if (i >= n)
+            return name;
+        StringBuilder sb = new StringBuilder(name);
+        char t = sb.charAt(i);
+        sb.setCharAt(i, sb.charAt(n));
+        sb.setCharAt(n, t);
+        return reverse(sb.toString(), i + 1, n - 1);
+    }
+}
