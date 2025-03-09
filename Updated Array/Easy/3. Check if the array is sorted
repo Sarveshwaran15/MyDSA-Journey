@@ -1,0 +1,21 @@
+public class CheckSort {
+    public static void main(String[] args) {
+        int[] arr={1,2,3,4};
+        int i=0;
+        int j=i+1;
+        String val="ture";
+        while(i<j && j<arr.length)
+        {
+            if(arr[i]<arr[j])
+            {
+                i++;
+                j++;
+            }
+            else{
+                val="false";
+                break;
+            }
+        }
+        System.out.println(val);
+    }
+}
