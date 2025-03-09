@@ -1,0 +1,17 @@
+
+import java.util.HashSet;
+
+public class RemoveDup {
+    public static void main(String[] args) {
+        int[] arr={1,1,2,2,2,3,3};
+        HashSet<Integer> set=new HashSet<>();
+        for(int i:arr)
+        {
+            set.add(i);
+        }
+        for(int n:set)
+        {
+            System.out.println(n);
+        }
+    }
+}
