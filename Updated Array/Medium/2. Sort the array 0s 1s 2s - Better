@@ -1,0 +1,38 @@
+
+import java.util.Arrays;
+
+public class SortZeroOneTwo {
+    public static void main(String[] args) {
+        int[] arr={0,1,2,0,1,2,1,2,0,0,0,1};
+        int countO=0;
+        int count1=0;
+        int count2=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i]==0)
+            {
+                countO++;
+            }
+            if(arr[i]==1)
+            {
+                count1++;
+            }
+            else{
+                count2++;
+            }
+        }
+       for(int i=0;i<countO;i++)
+       {
+        arr[i]=0;
+       }
+       for(int i=countO;i<countO+count1;i++)
+       {
+            arr[i]=1;
+       }
+       for(int i=countO+count1;i<arr.length;i++)
+       {
+        arr[i]=2;
+       }
+        System.err.println(Arrays.toString(arr));
+    }
+}
