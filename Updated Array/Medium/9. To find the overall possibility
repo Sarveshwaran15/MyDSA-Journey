@@ -1,0 +1,13 @@
+public class OverallPossible {
+    public static void main(String[] args) {
+        int[] arr={3,2,1};
+        int possible=arr.length;
+        System.out.println(fact(possible));
+    }
+    static int fact(int n)
+    {
+        if(n==0)
+            return 1;
+        return n * fact(n-1);
+    }
+}
