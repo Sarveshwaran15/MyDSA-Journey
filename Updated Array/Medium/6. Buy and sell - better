@@ -1,0 +1,24 @@
+public class BuyandSell {
+    public static void main(String[] args) {
+        int[] arr={7,1,5,3,6,4};
+        int min=arr[0];
+        int minIndex=0;
+        int sell=0;
+        for(int i=1;i<arr.length;i++)
+        {
+            if(min>arr[i])
+            {
+                min=arr[i];
+                minIndex=i;
+            }
+        }
+        for(int i=minIndex+1;i<arr.length;i++)
+        {
+            if(sell<arr[i])
+            {
+                sell=arr[i];
+            }
+        }
+        System.out.println("buy : "+min+" sell : "+sell);
+    }
+}
