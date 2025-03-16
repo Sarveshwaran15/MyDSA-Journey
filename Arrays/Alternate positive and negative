@@ -1,0 +1,26 @@
+class Solution {
+    void rearrange(ArrayList<Integer> arr) {
+        int n = arr.size();
+        int[] pos = new int[n];
+        int[] neg = new int[n];
+        int posIndex = 0, negIndex = 0;
+        for (int num : arr) {
+            if (num < 0)
+                neg[negIndex++] = num;
+            else
+                pos[posIndex++] = num;
+        }
+        int i = 0, j = 0, k = 0;
+        while (i < posIndex && j < negIndex) {
+            arr.set(k++, pos[i++]);
+            arr.set(k++, neg[j++]);
+        }
+        while (i < posIndex) {
+            arr.set(k++, pos[i++]);
+        }
+        while (j < negIndex) {
+            arr.set(k++, neg[j++]);
+        }
+    }
+}
+
