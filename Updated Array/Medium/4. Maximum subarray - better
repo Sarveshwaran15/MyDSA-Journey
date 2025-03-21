@@ -15,3 +15,26 @@ public class MaxSubArray {
         System.out.println(maxi);
     }
 }
+
+
+public class MaxSubArray {
+    public static void main(String[] args) {
+        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
+        int target = 7; // Example target sum
+        int count = 0; // To count how many subarrays match target
+
+        for (int i = 0; i < arr.length; i++) {
+            int sum = 0;
+            for (int j = i; j < arr.length; j++) {
+                sum += arr[j];
+                if (sum == target) {
+                    // You can also print the subarray indices if needed
+                    System.out.println("Subarray from index " + i + " to " + j + " sums to target");
+                    count++;
+                }
+            }
+        }
+
+        System.out.println("Total subarrays with sum = " + target + " is: " + count);
+    }
+}
