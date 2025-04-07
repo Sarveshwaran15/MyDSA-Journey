@@ -1,0 +1,29 @@
+class Solution {
+    public static int[] lcmAndGcd(int a, int b) {
+        // code here
+        int[] result=new int[2];
+        int gcd=gcdCalculate(a,b);
+        int lcm=lcmCalculate(a,b);
+        result[0]=lcm;
+        result[1]=gcd;
+        return result;
+    }
+    public static int gcdCalculate(int a,int b)
+    {
+        while(a>0 && b>0)
+        {
+            if(a>b)
+                a=a%b;
+            else
+                b=b%a;
+        }
+        if(a==0)
+            return b;
+        return a;
+    }
+    
+    public static int lcmCalculate(int a,int b)
+    {
+        return (a*b)/gcdCalculate(a,b);
+    }
+}
