@@ -1,0 +1,26 @@
+package com.sarvesh;
+
+import java.util.Scanner;
+
+public class CharacterHashing {
+    public static void main(String[] args) {
+        String str = "abcdabefc";
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of queries: ");
+        int queries = sc.nextInt();
+        for (int i = 0; i < queries; i++) {
+            System.out.print("Enter character to count: ");
+            char query = sc.next().trim().charAt(0);
+            int count = 0;
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(j) == query) {
+                    count++;
+                }
+            }
+
+            System.out.println("Count of '" + query + "' = " + count);
+        }
+
+        sc.close();
+    }
+}
