@@ -1,0 +1,41 @@
+package com.sarvesh;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class GCD {
+    public static void main(String[] args)
+    {
+        int n1=3;
+        int n2=12;
+        System.out.println(gcd(n1,n2));
+    }
+    public static int gcd(int n1,int n2)
+    {
+        ArrayList<Integer> lst1=new ArrayList<>();
+        ArrayList<Integer> lst2=new ArrayList<>();
+        ArrayList<Integer> result=new ArrayList<>();
+        for(int i=1;i<=n1;i++)
+        {
+            if(n1%i==0)
+                lst1.add(i);
+        }
+        for(int i=1;i<=n2;i++)
+        {
+            if(n2%i==0)
+                lst2.add(i);
+        }
+        for(int i=0;i<lst1.size();i++)
+        {
+            int val=lst1.get(i);
+            for(int j=0;j<lst2.size();j++)
+            {
+                if(val==lst2.get(j))
+                {
+                    result.add(val);
+                }
+            }
+        }
+        return Collections.max(result);
+    }
+}
