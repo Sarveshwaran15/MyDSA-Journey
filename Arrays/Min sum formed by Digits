@@ -1,0 +1,38 @@
+Given an array of digits (values are from 0 to 9), find the minimum possible sum of two numbers formed from digits of the array. All digits of the given array must be used to form the two numbers.
+
+Any combination of digits may be used to form the two numbers to be summed.  Leading zeroes are permitted.
+
+If forming two numbers is impossible (i.e. when n==0) then the "sum" is the value of the only number that can be formed.
+
+Input:
+N = 6
+arr[] = {6, 8, 4, 5, 2, 3}
+Output:
+604
+Explanation:
+The minimum sum is formed by numbers 
+358 and 246
+
+Java Code
+
+class Solution {
+
+    public static long minSum(int arr[], int n) {
+        long sum = 0;
+        StringBuilder even = new StringBuilder();
+        StringBuilder odd = new StringBuilder();
+        if (n == 0) return 0;
+        if (n == 1) return arr[0];
+        Arrays.sort(arr);
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0)
+                even.append(arr[i]);
+            else
+                odd.append(arr[i]);
+        }
+        long num1 = Long.parseLong(even.toString());
+        long num2 = Long.parseLong(odd.toString());
+        sum = num1 + num2;
+        return sum;
+    }
+}
