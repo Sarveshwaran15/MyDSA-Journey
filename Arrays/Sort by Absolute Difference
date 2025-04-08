@@ -1,0 +1,18 @@
+You are given a number k and array arr. Your task is to rearrange the elements of array arr according to the absolute difference with k, i.e., an element having minimum difference comes first, and so on.
+Note: If two or more elements are at equal distances arrange them in the same sequence as in the given array.
+
+Examples:
+
+Input: k = 7, arr[] = [10, 5, 3, 9, 2]
+Output: [5, 9, 10, 3, 2]
+Explanation: Sorting the numbers according to the absolute difference with 7, we have array elements as 5, 9, 10, 3, 2.
+
+Java Code
+
+class Solution {
+    // Function to sort the array according to difference with given number.
+    static void sortABS(int k, List<Integer> arr) {
+        // add your code here
+        arr.sort(Comparator.comparingInt(a -> Math.abs(a - k)));
+    }
+}
