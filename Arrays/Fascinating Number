@@ -1,0 +1,36 @@
+Given a number n. Your task is to check whether it is fascinating or not.
+
+Fascinating Number: A number with 3 or more digits is considered fascinating if, when it is multiplied by 2 and 3, and the resulting products are concatenated with the original number, the final sequence contains all the digits from 1 to 9 exactly once.
+
+Note:  If a number is fascinating, return true. Otherwise, return false.
+
+Examples:
+
+Input: n = 192
+Output: true
+Explanation: After multiplication with 2 and 3, and concatenating with original number, number will become 192384576 which contains all digits from 1 to 9.
+
+Java Code
+
+class Solution {
+    boolean fascinating(long n) {
+        // code here
+        StringBuilder sb = new StringBuilder();
+        sb.append(n);
+        sb.append(n * 2);
+        sb.append(n * 3);
+        String result = sb.toString();
+        if (result.length() != 9) return false;
+        int[] freq = new int[10];
+        for (char c : result.toCharArray()) {
+            int digit = c - '0';
+            if (digit == 0) return false; 
+            freq[digit]++;
+        }
+        for (int i = 1; i <= 9; i++) {
+            if (freq[i] != 1) return false;
+        }
+
+        return true;
+    }
+}
