@@ -1,0 +1,46 @@
+Given two arrays arr1[] and arr2[] of the same size, 
+find the minimum sum of two elements such that one element is from arr1[] and the other is from arr2[], 
+and they are not at the same index in their respective arrays.
+
+Examples:
+
+Input: arr1[] = [5, 4, 13, 2, 1], arr2[] = [2, 3, 4, 6, 5]
+Output: 3
+Explanation: The minimum sum is obtained by taking 1 from arr1[] and 2 from arr2[]. The sum is 1 + 2 = 3.
+
+class Solution {
+    public int minSum(int[] arr1, int[] arr2) {
+        // code here
+        int n = arr1.length;
+        int min1 = Integer.MAX_VALUE, idx1 = -1;
+        for (int i = 0; i < n; i++) {
+            if (arr1[i] < min1) {
+                min1 = arr1[i];
+                idx1 = i;
+            }
+        }
+        int min2 = Integer.MAX_VALUE, idx2 = -1;
+        for (int i = 0; i < n; i++) {
+            if (arr2[i] < min2) {
+                min2 = arr2[i];
+                idx2 = i;
+            }
+        }
+        if (idx1 != idx2) {
+            return min1 + min2;
+        }
+        int secondMin1 = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (i != idx2 && arr1[i] < secondMin1) {
+                secondMin1 = arr1[i];
+            }
+        }
+        int secondMin2 = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (i != idx1 && arr2[i] < secondMin2) {
+                secondMin2 = arr2[i];
+            }
+        }
+        return Math.min(min1 + secondMin2, secondMin1 + min2);
+    }
+}
