@@ -1,0 +1,34 @@
+Given an array arr of integers, the task is to count the number of elements of the array which are Fibonacci numbers
+
+Examples:
+
+Input: arr[] = [4, 2, 8, 5, 20, 1, 40, 13, 23]
+Output: 5
+Explanation: Fibonacci Numbers that are present in array are 2, 8, 5, 1, 13
+
+class Solution {
+    public int countFibonacciNumbers(long[] arr) {
+        // code here
+        long max = Long.MIN_VALUE;
+        for (long num : arr) {
+            if (num > max) max = num;
+        }
+        Set<Long> fibSet = new HashSet<>();
+        long a = 0, b = 1;
+        fibSet.add(a);
+        fibSet.add(b);
+        while (b <= max) {
+            long c = a + b;
+            fibSet.add(c);
+            a = b;
+            b = c;
+        }
+        int count = 0;
+        for (long num : arr) {
+            if (fibSet.contains(num)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
