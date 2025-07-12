@@ -1,0 +1,42 @@
+Given an array arr[] of integers, determine whether a subsequence exists with an odd sum. 
+If such a subsequence exists, return the maximum possible odd sum. If no subsequence with an odd sum can be formed, return -1.
+
+Examples:
+
+Input: arr = [4, -3, 3, -5]
+Output: 7
+Explanation: The subsequence with the maximum odd sum is [4, 3], and the sum is 4 + 3 = 7.
+
+class Solution {
+    public int findMaxOddSum(int[] arr) {
+        // code here
+          int maxSum = 0;
+        Integer minOddPos = null;
+        Integer maxOddNeg = null;
+        for (int num : arr) {
+            if (num > 0) {
+                maxSum += num;
+                if (num % 2 != 0) {
+                    if (minOddPos == null || num < minOddPos) {
+                        minOddPos = num;
+                    }
+                }
+            } else {
+                if (num % 2 != 0) {
+                    if (maxOddNeg == null || num > maxOddNeg) {
+                        maxOddNeg = num;
+                    }
+                }
+            }
+        }
+        if (maxSum % 2 != 0) return maxSum;
+        int best = -1;
+        if (minOddPos != null) {
+            best = Math.max(best, maxSum - minOddPos); 
+        }
+        if (maxOddNeg != null) {
+            best = Math.max(best, maxSum + maxOddNeg); 
+        }
+        return best;
+    }
+}
