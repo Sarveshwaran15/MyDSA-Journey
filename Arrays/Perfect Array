@@ -1,0 +1,39 @@
+Given an array arr[] of non-negative integers, determine whether the array is perfect. 
+An array is considered perfect if it first strictly increases, then remains constant, and finally strictly decreases.
+Any of these three parts can be empty.
+
+Examples:
+Input: arr[] = [1, 8, 8, 8, 3, 2]
+Output: true
+Explanation: The array [1, 8, 8, 8, 3, 2] first increases in the range [0, 1], stays constant in the range [1, 3], 
+and then decreases in the range [3, 4]. Thus, the array is perfect.
+
+class Solution {
+    public boolean isPerfect(int[] arr) {
+        // code here
+        int flag=0;
+        if(arr[0]>=arr[1])
+        {
+            return false;
+        }
+        else
+        {
+            for(int i=2;i<arr.length;i++)
+            {
+                if(arr[i-1]>=arr[i])
+                {
+                    flag=1;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        if(flag==1)
+        {
+            return true;
+        }
+        return false;
+    }
+}
