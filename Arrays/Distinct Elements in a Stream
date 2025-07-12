@@ -1,0 +1,33 @@
+Given an array of integers arr[], the task is to return the no of distinct elements in subarray arr[0, i] for 0 <= i <arr.size().
+The array will have positive and negative values. 
+positive value means you have to append it into your data and negative value means you have to remove it from your data.
+Note: If the element is not present in the data and you get the -ve of that element then no changes should occur.
+
+Examples:
+
+Input: arr[] = [5, 5, 7, -5, -7, 1, 2, -2]
+Output: [1, 1, 2, 2, 1, 2, 3, 2]
+Explanation: Proper adding and removal of intgers will give this output.
+
+class Solution {
+    public List<Integer> getDistinct(int[] arr) {
+        // code here
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int num : arr) {
+            if (num > 0) {
+                freq.put(num, freq.getOrDefault(num, 0) + 1);
+            } else {
+                int absVal = -num;
+                if (freq.containsKey(absVal)) {
+                    freq.put(absVal, freq.get(absVal) - 1);
+                    if (freq.get(absVal) == 0) {
+                        freq.remove(absVal); 
+                    }
+                }
+            }
+            result.add(freq.size());
+        }
+        return result;
+    }
+}
