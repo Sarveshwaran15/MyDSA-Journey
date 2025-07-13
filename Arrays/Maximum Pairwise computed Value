@@ -1,0 +1,35 @@
+Given an even sized array arr[], where each consecutive pair of elements represents a height with two fields: feet and inches.
+Find the maximum height, where the height is calculated by converting feet to inches and adding the inches.
+
+Examples:
+
+Input: arr[] = [1, 2, 2, 1] 
+Output: 25
+Explanation: (1, 2) and (2, 1) are respective given heights.
+After converting both heigths in to inches, we get 14 and 25 as respective heights. So, 25 is the maximum height.
+
+/*
+Class of the element of the array is as
+class Height {
+    int feet;
+    int inches;
+    public Height(int ft, int inc)
+    {
+        feet = ft;
+        inches = inc;
+    }
+}
+*/
+// function must return the maximum Height
+// return the height in inches
+class Solution {
+    public int findMax(ArrayList<Height> arr) {
+        // your code here
+        int maxHeight = 0;
+        for (Height h : arr) {
+            int currentHeight = (h.feet * 12) + h.inches;
+            maxHeight = Math.max(maxHeight, currentHeight);
+        }
+        return maxHeight;
+    }
+}
