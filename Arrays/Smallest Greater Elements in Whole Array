@@ -1,0 +1,30 @@
+Given an array A of N length. We need to calculate the next smallest greater element for each element in a given array. 
+If the next greater element is not available in a given array then we need to fill -10000000 at that index place.
+
+Example 1:
+
+Input : arr[] = {13, 6, 7, 12}
+Output : _ 7 12 13 
+Explanation:
+Here, at index 0, 13 is the greatest value 
+in given array and no other array element 
+is greater from 13. So at index 0 we fill 
+'-10000000'.
+
+class Complete {
+
+    // Function for finding maximum and value pair
+    public static int[] greaterElement(int arr[], int n) {
+        // Complete the function
+        int[] result = new int[n];
+        TreeSet<Integer> set = new TreeSet<>();
+        for (int num : arr) {
+            set.add(num);
+        }
+        for (int i = 0; i < n; i++) {
+            Integer nextGreater = set.higher(arr[i]);  
+            result[i] = (nextGreater == null) ? -10000000 : nextGreater;
+        }
+        return result;
+    }
+}
