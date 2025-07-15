@@ -1,0 +1,36 @@
+Given two arrays arr1 and arr2, representing two numbers such that every element of arrays represents a digit. 
+The task is to find the sum of both the numbers.
+
+Examples:
+
+Input : arr1[] = [1, 2], arr2[] = [2, 1]
+Output : 33
+Explanation: arr1[]=[1,2] number represented by first array is 12. arr2[] = [2, 1] number represented by second array is 21. Sum = 12 + 21 = 33.
+
+
+class Solution {
+
+    String calc_Sum(int arr1[], int arr2[]) {
+        // Complete the function
+        StringBuilder result = new StringBuilder();
+        int n1 = arr1.length;
+        int n2 = arr2.length;
+        int i = n1 - 1;
+        int j = n2 - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry != 0) {
+            int sum = carry;
+            if (i >= 0) {
+                sum += arr1[i];
+                i--;
+            }
+            if (j >= 0) {
+                sum += arr2[j];
+                j--;
+            }
+            result.append(sum % 10);
+            carry = sum / 10;
+        }
+        return result.reverse().toString();
+    }
+}
