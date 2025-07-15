@@ -1,0 +1,39 @@
+Given an array arr[] of size N containing equal number of odd and even numbers. 
+Arrange the numbers in such a way that all the even numbers get the even index and odd numbers get the odd index.
+Note: There are multiple possible solutions, Print any one of them. Also, 0-based indexing is considered.
+
+ 
+
+Example 1:
+
+Input:
+N = 6
+arr[] = {3, 6, 12, 1, 5, 8}
+Output:
+1
+Explanation:
+6 3 12 1 8 5 is a possible solution.
+The output will always be 1 if your
+rearrangement is correct.
+
+
+class Solution {
+    static void reArrange(int[] arr, int N) {
+        // code here
+        int[] result = new int[N];
+        int evenIndex = 0;
+        int oddIndex = 1;
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                result[evenIndex] = num;
+                evenIndex += 2;
+            } else {
+                result[oddIndex] = num;
+                oddIndex += 2;
+            }
+        }
+        for (int i = 0; i < N; i++) {
+            arr[i] = result[i];
+        }
+    }
+};
