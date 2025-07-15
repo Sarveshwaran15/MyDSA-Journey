@@ -1,0 +1,31 @@
+A professor attended a party and classified it into two categories based on the colors of the robes.
+If all party members are wearing different colored robes, represented by positive integers in the array arr[], then it is a girl's only party. 
+If there is at least one duplicate color, it is a boy's party.
+Determine the type of party by returning “true” if it’s a boy’s party, otherwise, return “false”.
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 4, 7]
+Output: false
+Explanation: All the colors are unique so it's a GIRLS party.
+
+class Solution {
+
+    public static String PartyType(int arr[]) {
+        // Your code goes here
+        String s="false";
+        for(int i=0;i<arr.length-1;i++)
+        {
+            int value=arr[i];
+            for(int j=i+1;j<arr.length;j++)
+            {
+                if(arr[j]==value)
+                {
+                    s="true";
+                    break;
+                }
+            }
+        }
+        return s;
+    }
+}
