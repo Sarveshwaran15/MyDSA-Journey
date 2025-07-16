@@ -1,0 +1,23 @@
+Given an array arr[] of positive integers, count the number of pairs of integers in the array that have the sum divisible by 4.
+
+Examples:
+
+Input : arr[] = [2, 2, 1, 7, 5]
+Output : 3
+Explanation: (2,2), (1,7) and (7,5) are the 3 pairs.
+
+class Solution {
+
+    public static int count4Divisibiles(int arr[]) {
+        // Complete the function
+        int[] rem = new int[4];  
+        for (int num : arr) {
+            rem[num % 4]++;
+        }
+        int count = 0;
+        count += (rem[0] * (rem[0] - 1)) / 2;
+        count += (rem[2] * (rem[2] - 1)) / 2;
+        count += rem[1] * rem[3];
+        return count;
+    }
+}
