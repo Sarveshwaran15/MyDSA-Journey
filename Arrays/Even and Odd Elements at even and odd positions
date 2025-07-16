@@ -1,0 +1,37 @@
+Given an array arr[], the task is to arrange the array such that odd elements occupy the odd positions and even elements occupy the even positions. The order of elements must remain the same. Consider zero-based indexing. After printing according to conditions, if remaining, print the remaining elements as it is.
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 4, 5, 6]
+Output: [2, 1, 4, 3, 6, 5]
+Explanation: Even elements are at even position and odd elements are at odd position keeping the order maintained.
+
+class Solution {
+    public static ArrayList<Integer> arrangeOddAndEven(int arr[]) {
+        // write code here
+        Queue<Integer> evenQueue = new LinkedList<>();
+        Queue<Integer> oddQueue = new LinkedList<>();
+        for (int num : arr) {
+            if (num % 2 == 0)
+                evenQueue.add(num);
+            else
+                oddQueue.add(num);
+        }
+        ArrayList<Integer> result = new ArrayList<>();
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) { 
+                if (!evenQueue.isEmpty())
+                    result.add(evenQueue.poll());
+                else if (!oddQueue.isEmpty())
+                    result.add(oddQueue.poll());
+            } else { 
+                if (!oddQueue.isEmpty())
+                    result.add(oddQueue.poll());
+                else if (!evenQueue.isEmpty())
+                    result.add(evenQueue.poll());
+            }
+        }
+        return result;
+    }
+}
