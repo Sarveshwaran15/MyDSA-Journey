@@ -1,0 +1,24 @@
+Given an unsorted array arr[] of integers and a sum k. The task is to count the number of subarrays that add to a given number k.
+
+Examples:
+
+Input: arr[] = [10, 2, -2, -20, 10], k = -10
+Output: 3
+Explanation: Subarrays with sum -10 are: [10, 2, -2, -20], [2, -2, -20, 10] and [-20, 10].
+
+class Solution {
+    public static int subArraySum(int[] arr, int k) {
+        // code here.
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        int currSum = 0;
+        for (int num : arr) {
+            currSum += num;
+            if (currSum == k)
+                count++;
+            count += map.getOrDefault(currSum - k, 0);
+            map.put(currSum, map.getOrDefault(currSum, 0) + 1);
+        }
+        return count;
+    }
+}
