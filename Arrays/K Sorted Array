@@ -1,0 +1,31 @@
+Given an array of n distinct elements. Check whether the given array is a k-sorted array or not. 
+A k-sorted array is an array where each element is at most k distance away from its target position in the sorted array. 
+Return "Yes" if the array is a k-sorted array else return "No".
+
+Examples
+
+Input: n=6, arr[] = {3, 2, 1, 5, 6, 4}, k = 2
+Output: Yes
+Explanation: Every element is at most 2 distance away from its target position in thesorted array. 
+
+class Solution {
+    static String isKSortedArray(int arr[], int n, int k) {
+        // code here
+        int[] sortedArr = arr.clone();
+        Arrays.sort(sortedArr);
+        Map<Integer, Queue<Integer>> positionMap = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            positionMap
+                .computeIfAbsent(sortedArr[i], key -> new LinkedList<>())
+                .add(i);
+        }
+        for (int i = 0; i < n; i++) {
+            int element = arr[i];
+            int sortedIndex = positionMap.get(element).poll(); 
+            if (Math.abs(i - sortedIndex) > k) {
+                return "No";
+            }
+        }
+        return "Yes";
+    }
+}
