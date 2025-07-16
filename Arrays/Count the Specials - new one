@@ -1,0 +1,27 @@
+Given an array arr[] (may contain duplicates) and positive integer k.
+The task is to count the number of elements that occur exactly floor(n/k) times in the array.
+
+Examples:
+
+Input: arr[] = [1, 4, 1, 2, 4], k=2
+Output: 2
+Explanation: In the given array, 1 and 4 occurs floor(5/2) = 2 times. So count is 2.
+
+class Solution {
+    static int countSpecials(int arr[], int k) {
+        // your code here
+        int n = arr.length;
+        int targetFreq = n / k;
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        int count = 0;
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        for (int freq : freqMap.values()) {
+            if (freq == targetFreq) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
