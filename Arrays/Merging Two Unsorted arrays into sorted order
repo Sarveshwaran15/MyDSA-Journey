@@ -1,0 +1,28 @@
+Given two different arrays arr1[] and arr2[], the task is to merge the two unsorted arrays and return a sorted array.
+
+Examples:
+
+Input: arr1[] = [10, 5, 15] , arr2[] = [20, 3, 2]
+Output: [2, 3, 5, 10, 15, 20]
+Explanation: After merging both the array's and sorting it with get the desired output.  
+
+class Solution {
+    public void sortedMerge(int[] arr1, int[] arr2, int[] res) {
+        // code here
+        int index=0;
+        for(int i=0;i<arr1.length;i++)
+        {
+            res[i]=arr1[i];
+            index=i;
+        }
+        int lower=index+1;
+        int i=0;
+        while(lower<res.length)
+        {
+            res[lower]=arr2[i];
+            i++;
+            lower++;
+        }
+        Arrays.sort(res);
+    }
+}
