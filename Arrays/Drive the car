@@ -1,0 +1,23 @@
+You are a car driver tasked with driving on a track divided into sub-tracks. The car can travel "k" kilometers on each sub-track. If the car can't cover a sub-track, you can add petrol, with each unit increasing the car's range by one kilometer. Return the minimum units of petrol needed for the car to cover all sub-tracks. If no extra petrol is required, return -1.
+
+Examples:
+
+Input: arr[] = [2, 5, 4, 5, 2], k = 7
+Output: -1
+Explanation: No extra petrol required, as k is greater than all the elemnts in the array hence -1.
+
+
+class Solution {
+    // Function to calculate the difference between the maximum element in the array and
+    // a given number k
+    public int required(int[] arr, int k) {
+        // Your code goes here
+        int extraPetrol = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > k) {
+                extraPetrol = Math.max(extraPetrol, arr[i] - k);
+            }
+        }
+        return extraPetrol == 0 ? -1 : extraPetrol;
+    }
+}
