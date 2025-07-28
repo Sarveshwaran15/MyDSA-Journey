@@ -1,0 +1,20 @@
+Given a sorted array arr[]. Count the number of distinct absolute values present in the array.
+
+Examples:
+
+Input: arr[] = [-3, -2, 0, 3, 4, 5]
+Output: 5
+Explanation: There are 5 distinct absolute values i.e. 0, 2, 3, 4 and 5.
+
+class Solution {
+    public int distinctCount(int[] arr) {
+        // Your code goes here.
+        HashSet<Integer> set=new HashSet<>();
+        for(int i=0;i<arr.length;i++)
+        {
+            int value=Math.abs(arr[i]);
+            set.add(value);
+        }
+        return set.size();
+    }
+}
