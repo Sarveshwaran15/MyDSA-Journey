@@ -1,0 +1,33 @@
+Given an array arr, rearrange the array according to the following relations :
+
+arr[i] >= arr[i-1], if i is even.
+arr[i] <= arr[i-1], if i is odd.
+[Considering 1-base indexed array]
+
+Return the rearranged array.
+
+Note: The driver code will print "true" if your output array satisfies the conditions; otherwise, it will print "false".
+
+Example:
+
+Input: arr[] = [1, 2, 2, 1]
+Output: [1, 2, 1, 2]
+Explanation: Both 2s are at even positions and 1s at odd positions, satisfying the given conditions.
+
+
+class Solution {
+    // Method to rearrange the array
+    public ArrayList<Integer> rearrangeArray(ArrayList<Integer> arr) {
+        // code here
+        int n = arr.size();
+        for (int i = 1; i < n; i++) {
+            if ((i % 2 == 1 && arr.get(i) < arr.get(i - 1)) ||
+                (i % 2 == 0 && arr.get(i) > arr.get(i - 1))) {
+                int temp = arr.get(i);
+                arr.set(i, arr.get(i - 1));
+                arr.set(i - 1, temp);
+            }
+        }
+        return arr;
+    }
+}
