@@ -1,0 +1,26 @@
+You are given an array arr[], containing the IDs of users in chronological order of their occurrences. Find the first user who has exactly k occurrences.
+If no such user exists, return -1.
+
+Examples:
+
+Input: arr[] = [1, 7, 4, 3, 4, 8, 7] , k = 2
+Output: 7
+Explanation: Both 7 and 4 occur 2 times. But 7 is the first that occurs 2 times. 
+
+
+class Solution {
+
+    static int firstElement(int arr[], int k) {
+        // write code here
+        HashMap<Integer, Integer> freq = new HashMap<>();
+        for (int id : arr) {
+            freq.put(id, freq.getOrDefault(id, 0) + 1);
+        }
+        for (int id : arr) {
+            if (freq.get(id) == k) {
+                return id;
+            }
+        }
+        return -1;
+    }
+}
