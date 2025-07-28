@@ -1,0 +1,35 @@
+Given a number n, count the numbers from 1 to n, which comprise only digits from set {1, 2, 3, 4, 5}.
+
+Examples:
+
+Input: n = 20
+Output: 10
+Explanation: The numbers whose digits are from the given set are: 1, 2, 3, 4, 5, 11, 12, 13, 14, 15.
+
+class Solution {
+    // Function to count the numbers satisfying the given condition.
+    public int countNumbers(int n) {
+        // code here
+        int count = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        int[] digits = {1, 2, 3, 4, 5};
+        for (int d : digits) {
+            if (d <= n) {
+                queue.offer(d);
+                count++;
+            }
+        }
+        while (!queue.isEmpty()) {
+            int num = queue.poll();
+
+            for (int d : digits) {
+                int next = num * 10 + d;
+                if (next <= n) {
+                    queue.offer(next);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
