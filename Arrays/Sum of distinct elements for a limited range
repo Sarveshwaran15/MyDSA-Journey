@@ -1,0 +1,25 @@
+Given an array, arr[] such that every element of the array is an integer in the range 1 to n (n is the size of arr), the task is to find the sum of all the distinct elements of the array.
+
+Examples:
+
+Input: arr[] = [5, 1, 2, 4, 6, 7, 3, 6, 7]
+Output: 28
+Explanation: The distinct elements in the array are 1, 2, 3, 4, 5, 6, 7.
+
+// User function Template for Java
+class Solution {
+    // Function to calculate the sum of distinct elements in the array.
+    public int sumOfDistinct(int[] arr) {
+        // code here
+        HashSet<Integer> set=new HashSet<>();
+        for(int i:arr)
+        {
+            set.add(i);
+        }
+        int sum = 0;
+        for (int i : set) {
+            sum += i;
+        }
+        return sum;
+    }
+}
