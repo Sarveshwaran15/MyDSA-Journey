@@ -1,0 +1,29 @@
+Given an array containing positive and negative numbers. The array represents checkpoints from one end to the other end of the street. Positive and negative values represent the amount of energy at that checkpoint. Positive numbers increase the energy and negative numbers decrease. Find the minimum initial energy required to cross the street so that the energy level never becomes 0 or less than 0.
+
+Note:  The value of the minimum initial energy required will be 1 even if we cross the street successfully without losing energy to less than and equal to 0 at any checkpoint. The 1 is needed for the initial checkpoint.
+
+Examples:
+
+Input: arr[] = [4, -10, 4, 4, 4]
+Output: 7
+Explanation: By having an initial energy of 7 we can make sure that all the checkpoints are visited and the fuel never reaches 0 or less value.
+
+// User function Template for Java
+
+class Solution {
+    public int minEnergy(int a[]) {
+        // Your code goes here
+        int energy = 0;
+        int minEnergy = 0;
+        for (int i = 0; i < a.length; i++) {
+            energy += a[i];
+            minEnergy = Math.min(minEnergy, energy);
+        }
+        if (minEnergy < 0) {
+            return 1 - minEnergy;  
+        }
+        return 1;
+    }
+}
+
+
