@@ -1,0 +1,33 @@
+Given n arrays of size m each. Find maximum sum obtained by selecting a number from each array such that the element selected from the i-th array is more than the element selected from (i-1)-th array. If maximum sum cannot be obtained then return 0.
+
+Example 1:
+
+â€‹Input : arr[ ] = {{1,7,4,3}, {4,2,5,1}, {9,5,1,8}}
+Output : 18
+Explanation:
+We can select 4 from the first array,
+5 from second array and 9 from the third array.
+
+class Complete {
+
+    // Function for finding maximum and value pair
+    public static int maximumSum(int n, int m, int arr[][]) {
+        // Complete the function
+        int sum = 0;
+        int prev = Integer.MAX_VALUE;
+        for (int i = n - 1; i >= 0; i--) {
+            int maxBelowPrev = Integer.MIN_VALUE;
+            for (int j = 0; j < m; j++) {
+                if (arr[i][j] < prev) {
+                    maxBelowPrev = Math.max(maxBelowPrev, arr[i][j]);
+                }
+            }
+            if (maxBelowPrev == Integer.MIN_VALUE) {
+                return 0;
+            }
+            sum += maxBelowPrev;
+            prev = maxBelowPrev;
+        }
+        return sum;
+    }
+}
