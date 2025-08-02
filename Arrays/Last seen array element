@@ -1,0 +1,28 @@
+Given an array arr[]  of integers that might contain duplicates, find the element whose last appearance is earliest.
+
+Examples:
+
+Input : arr[] = [10, 30, 20, 10, 20]
+Output : 30
+Explanation: The element 30 has the earliest last appearance at index 1. Therefore, the output is 30. Even though 10 and 20 appear multiple times, their last appearances occur at later indices (3 and 4, respectively), so 30 is the correct answer.
+
+// User function Template for Java
+
+class Solution {
+    public static int lastSeenElement(int arr[]) {
+        // Complete the function
+        Map<Integer, Integer> lastIndexMap = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            lastIndexMap.put(arr[i], i);
+        }
+        int minIndex = Integer.MAX_VALUE;
+        int result = -1;
+        for (Map.Entry<Integer, Integer> entry : lastIndexMap.entrySet()) {
+            if (entry.getValue() < minIndex) {
+                minIndex = entry.getValue();
+                result = entry.getKey();
+            }
+        }
+        return result;
+    }
+}
