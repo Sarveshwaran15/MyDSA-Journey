@@ -1,0 +1,30 @@
+You are given an array arr[] of ticket sellers where the ith ticket seller has arr[i] tickets. The price of a ticket is the number of tickets remaining with the ticket seller. They are allowed to sell at most k tickets. Find the maximum amount they can earn by selling k tickets. The amount of tickets of each seller is provided in array arr[]. Give the answer modulo 109 + 7.
+
+Examples:
+
+Input: arr[] = [4, 3, 6, 2, 4] , k=3
+Output: 15
+Explaination: Consider 0 based indexing. For first two turns the 2nd seller sells. For the third turn either 0th or 2nd seller can sell. So the total becomes 6 + 5 + 4 = 15.
+
+// User function Template for Java
+
+class Solution {
+    static int maxAmount(int[] arr, int k) {
+        // code here
+        int mod = 1_000_000_007;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int tickets : arr) {
+            pq.offer(tickets);
+        }
+        long result = 0;
+        for (int i = 0; i < k; i++) {
+            if (pq.isEmpty()) break;
+            int maxTickets = pq.poll();
+            result = (result + maxTickets) % mod;
+            if (maxTickets - 1 > 0) {
+                pq.offer(maxTickets - 1); 
+            }
+        }
+        return (int) result;
+    }
+}
