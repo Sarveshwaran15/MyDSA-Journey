@@ -1,0 +1,25 @@
+Given an array of integers arr of some size, return the count of contiguous subarrays for which the sum and product of the elements are equal.
+
+Examples:
+Input: arr[] = [1, 2, 3, 4, 5]
+Output: 6
+Explanation: The 6 subarrays with equal sum and product are: [1], [2], [3], [4], [5], [1, 2, 3].
+
+class Solution {
+    public int countSubarrays(int[] arr) {
+        // code here
+         int counter=arr.length;
+         for (int i = 0; i < arr.length; i++) {
+            int sum = arr[i];
+            int product = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                sum += arr[j];
+                product *= arr[j];
+                if (sum == product) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+}
